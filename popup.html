@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageCraft</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <div class="logo">✨</div>
+        <div>
+          <h1 class="title">PageCraft</h1>
+          <p class="subtitle">Visual Web Editor & AI Stylist</p>
+        </div>
+      </div>
+      <div class="status-badge">
+        <span class="status-dot"></span> Active
+      </div>
+    </header>
+
+    <!-- Site Memory Status Card -->
+    <div class="site-card">
+      <div class="site-card-header">
+        <span class="site-icon">🌐</span>
+        <span class="site-name" id="pc-site-name">Detecting site...</span>
+      </div>
+      <div class="site-card-body">
+        <span class="site-memory-stat" id="pc-site-stat">Auto-restores on page visit</span>
+      </div>
+      <button class="btn-clear-site" id="btn-clear-site" title="Revert saved modifications for this site">
+        <span>🧹 Clear Site Customizations</span>
+      </button>
+    </div>
+
+    <!-- Main Action Button -->
+    <div class="action-card">
+      <button class="btn-primary" id="btn-toggle-inspect">
+        <span class="btn-icon">🎯</span>
+        <span>Inspect & Edit Element</span>
+        <span class="badge-key">Alt + E</span>
+      </button>
+      <p class="card-caption">Click an element, style it, and click <strong>💾 Save for this Website</strong>.</p>
+    </div>
+
+    <!-- Shortcuts -->
+    <div class="shortcuts-box">
+      <div class="shortcuts-title">Quick Shortcuts</div>
+      <div class="shortcut-row">
+        <span>Toggle Inspector</span>
+        <kbd>Alt + E</kbd>
+      </div>
+      <div class="shortcut-row">
+        <span>Cancel Inspector</span>
+        <kbd>Esc</kbd>
+      </div>
+      <div class="shortcut-row">
+        <span>Undo / Redo</span>
+        <kbd>Ctrl + Z / Y</kbd>
+      </div>
+    </div>
+
+    <!-- Test Demo Button -->
+    <footer class="popup-footer">
+      <button class="btn-secondary" id="btn-open-demo">
+        <span>🚀 Open Interactive Demo Page</span>
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

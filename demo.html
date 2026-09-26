@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCraft Studio — Next-Gen AI Web Design Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Professional Developer Design System */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #070913;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #d946ef;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(99, 102, 241, 0.18) 0px, transparent 55%),
+        radial-gradient(at 85% 10%, rgba(217, 70, 239, 0.16) 0px, transparent 50%),
+        radial-gradient(at 50% 65%, rgba(16, 185, 129, 0.12) 0px, transparent 55%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Demo Guide Banner */
+    .demo-guide-banner {
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.3) 0%, rgba(217, 70, 239, 0.25) 50%, rgba(16, 185, 129, 0.25) 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      padding: 10px 24px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .demo-guide-badge {
+      background: #ffffff;
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6366f1 0%, #d946ef 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-item a:hover {
+      color: #ffffff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 9px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+      color: #ffffff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 24px -4px rgba(99, 102, 241, 0.6);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.75);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 70px 0 60px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, #818cf8 70%, #d946ef 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Styling */
+    .section-title-wrap {
+      text-align: center;
+      margin: 90px 0 40px;
+    }
+
+    .section-tag {
+      color: #818cf8;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Interactive Showcase Grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 60px;
+    }
+
+    .showcase-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: #0f172a;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .showcase-card:hover .card-img {
+      transform: scale(1.04);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: auto;
+    }
+
+    .card-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Creators Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .team-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+
+    .team-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .team-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(99, 102, 241, 0.5);
+    }
+
+    .team-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .team-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .team-role {
+      font-size: 13px;
+      color: #818cf8;
+      font-weight: 500;
+    }
+
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 80px;
+    }
+
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(99, 102, 241, 0.6);
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.12) 0%, rgba(17, 24, 39, 0.85) 100%);
+      box-shadow: 0 16px 40px rgba(99, 102, 241, 0.25);
+    }
+
+    .featured-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #6366f1, #d946ef);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .plan-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .plan-price { font-size: 44px; font-weight: 800; color: #ffffff; margin: 16px 0; font-family: 'JetBrains Mono', monospace; }
+    .plan-price span { font-size: 15px; color: var(--text-muted); font-weight: 500; font-family: inherit; }
+
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+      flex: 1;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: #34d399;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    /* Testimonial Quote */
+    .testimonial {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(217, 70, 239, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto 90px;
+      backdrop-filter: blur(16px);
+    }
+
+    .quote-text {
+      font-size: 22px;
+      font-style: italic;
+      color: #f1f5f9;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 50px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .showcase-grid, .pricing-grid, .team-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 38px; }
+      .nav-menu { display: none; }
+      .stats-bar { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Demo Hint Banner -->
+  <div class="demo-guide-banner">
+    <span class="demo-guide-badge">PAGE CRAFT 2.2</span>
+    <span>✨ <strong>Live Visual Editor Ready:</strong> Drag the floating <strong>✨</strong> icon anywhere, click it to open the panel, select any headline, button, or photo, edit it live, and click <strong>[ 💾 SAVE FOR THIS WEBSITE ]</strong>!</span>
+  </div>
+
+  <div class="container">
+    <!-- Navbar -->
+    <header class="navbar">
+      <a href="#" class="brand">
+        <div class="brand-logo">✨</div>
+        <span>NovaCraft Studio</span>
+      </a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#showcase">Showcase</a></li>
+        <li class="nav-item"><a href="#creators">Creators</a></li>
+        <li class="nav-item"><a href="#pricing">Pricing</a></li>
+        <li class="nav-item"><a href="#reviews">Reviews</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-secondary" id="btn-signin">Sign In</button>
+        <button class="btn-primary" id="btn-get-started">Get Started Free</button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero">
+      <div class="pill-badge" id="hero-badge">
+        <span>🚀 Version 2.2 Released</span>
+        <span>•</span>
+        <span style="color: #ffffff;">Movable Visual Editor</span>
+      </div>
+
+      <h1 class="hero-title" id="main-headline">
+        Design, Edit & Customize The <span class="gradient-text">Web in Real Time</span>
+      </h1>
+
+      <p class="hero-sub" id="main-subhead">
+        Inspect and live-style any element on any website with real-time text editing, photo replacement, and 1-click styling presets. Save changes directly to your browser memory.
+      </p>
+
+      <div class="hero-cta-group">
+        <button class="btn-primary" id="btn-hero-primary" style="font-size: 16px; padding: 12px 28px;">
+          <span>✨ Start Visual Editing</span>
+        </button>
+        <button class="btn-secondary" id="btn-hero-secondary" style="font-size: 16px; padding: 12px 24px;">
+          <span>▶️ Watch Interactive Demo</span>
+        </button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-val" id="stat-creators">120K+</div>
+          <div class="stat-label">Active Creators</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-rating">4.9 / 5</div>
+          <div class="stat-label">Customer Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val" id="stat-uptime">99.9%</div>
+          <div class="stat-label">Uptime Reliability</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ME-QR Style Promo Banner & App Bar (Exact Match to User Screenshot) -->
+    <div id="promo-banner-meqr" style="margin: 40px 0; border-radius: 20px; background: linear-gradient(135deg, #7e22ce 0%, #a855f7 50%, #ec4899 100%); padding: 36px 40px; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(126, 34, 206, 0.4); display: flex; flex-direction: column; gap: 20px;">
+      <div style="max-width: 650px;">
+        <h2 id="meqr-banner-title" style="font-size: 32px; font-weight: 800; color: #ffffff; line-height: 1.25; margin-bottom: 12px;">
+          ✨ Logo QR — Previously $100, Now Completely Free!
+        </h2>
+        <p id="meqr-banner-desc" style="font-size: 16px; color: #fdf4ff; margin-bottom: 20px; line-height: 1.5;">
+          Turn your logo into a branded QR code with a unique dot pattern. Smart, stylish, and instantly recognizable.
+        </p>
+        <button id="btn-try-logo-qr" style="background: #ffffff; color: #7e22ce; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 10px; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.15);">
+          Try Logo QR Now
+        </button>
+      </div>
+
+      <!-- Bottom App Bar (As seen in User Screenshot) -->
+      <div id="meqr-bottom-app-bar" style="background: rgba(15, 10, 30, 0.85); backdrop-filter: blur(10px); border-radius: 12px; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(255,255,255,0.15); margin-top: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: #f8fafc; font-weight: 600;">
+          <span style="cursor: pointer; opacity: 0.7;">✕</span>
+          <span style="background: #a855f7; padding: 2px 6px; border-radius: 4px; font-size: 11px;">QR</span>
+          <span>Download ME-QR App</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <span style="background: rgba(255,255,255,0.15); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">🍏 App Store</span>
+          <span style="background: rgba(255,255,255,0.15); color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">▶️ Google Play</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Component Showcase Section (Perfect for Testing Text & Photo Swaps) -->
+    <section id="showcase">
+      <div class="section-title-wrap">
+        <div class="section-tag">Interactive Component Canvas</div>
+        <h2 class="section-title">Select Any Card Below to Customize Words or Photos</h2>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- Card 1: E-Commerce Product -->
+        <article class="showcase-card" id="card-product">
+          <div class="card-img-wrap">
+            <img class="card-img" id="img-product" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80" alt="Headphones">
+            <span class="card-badge" id="badge-product">Best Seller</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title" id="title-product">Aura Pro Noise-Cancelling Headphones</h3>
+            <p class="card-desc" id="desc-product">High-fidelity spatial audio with 40-hour ultra battery life and ergonomic memory foam cushions.</p>
+            <div class="card-footer">
+              <span class="card-price" id="price-product">$299.00</span>
+              <button class="btn-primary" id="btn-product-buy" style="padding: 8px 16px; font-size: 13px;">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Editorial Magazine -->
+        <article class="showcase-card" id="card-editorial">
+          <div class="card-img-wrap">
+            <img class="card-img" id="img-editorial" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80" alt="Architecture">
+            <span class="card-badge" id="badge-editorial">Design Editorial</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title" id="title-editorial">Crafting Tactile Web Experiences in 2026</h3>
+            <p class="card-desc" id="desc-editorial">How next-generation web architects use subtle micro-animations and spatial depth to mesmerize users.</p>
+            <div class="card-footer">
+              <span style="font-size: 13px; color: #a5b4fc; font-weight: 600;" id="tag-read-time">7 min read • UI/UX</span>
+              <button class="btn-secondary" id="btn-editorial-read" style="padding: 7px 14px; font-size: 13px;">Read Article</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Smart Tech Device -->
+        <article class="showcase-card" id="card-device">
+          <div class="card-img-wrap">
+            <img class="card-img" id="img-device" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&auto=format&fit=crop&q=80" alt="Smartwatch">
+            <span class="card-badge" id="badge-device">Limited Edition</span>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title" id="title-device">Chronos Titanium Smart Watch</h3>
+            <p class="card-desc" id="desc-device">Aerospace-grade titanium chassis with continuous biometric telemetry and sapphire crystal display.</p>
+            <div class="card-footer">
+              <span class="card-price" id="price-device">$450.00</span>
+              <button class="btn-primary" id="btn-device-buy" style="padding: 8px 16px; font-size: 13px;">Pre-Order</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Creators / Team Section (Perfect for Avatar Photo Swaps!) -->
+    <section id="creators">
+      <div class="section-title-wrap">
+        <div class="section-tag">Leadership Team</div>
+        <h2 class="section-title">Click Any Portrait Below to Test Photo Replacement</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card" id="team-sarah">
+          <img class="team-avatar" id="avatar-sarah" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&auto=format&fit=crop&q=80" alt="Sarah Connor">
+          <div class="team-info">
+            <div class="team-name" id="name-sarah">Sarah Connor</div>
+            <div class="team-role" id="role-sarah">Head of Product Design</div>
+          </div>
+        </div>
+
+        <div class="team-card" id="team-marcus">
+          <img class="team-avatar" id="avatar-marcus" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80" alt="Marcus Vance">
+          <div class="team-info">
+            <div class="team-name" id="name-marcus">Marcus Vance</div>
+            <div class="team-role" id="role-marcus">VP of Engineering</div>
+          </div>
+        </div>
+
+        <div class="team-card" id="team-maya">
+          <img class="team-avatar" id="avatar-maya" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&auto=format&fit=crop&q=80" alt="Maya Lin">
+          <div class="team-info">
+            <div class="team-name" id="name-maya">Maya Lin</div>
+            <div class="team-role" id="role-maya">Creative Studio Director</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+      <div class="section-title-wrap">
+        <div class="section-tag">Flexible Subscriptions</div>
+        <h2 class="section-title">Transparent Plans for Every Creative Team</h2>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card" id="plan-starter">
+          <div class="plan-name">Starter</div>
+          <div style="color: var(--text-muted); font-size: 13px;">For individual hobbyists</div>
+          <div class="plan-price">$19 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>Visual Element Inspector</li>
+            <li>Real-time CSS Editing</li>
+            <li>Basic Style Presets</li>
+            <li>Per-Website Local Memory</li>
+          </ul>
+          <button class="btn-secondary" style="width: 100%;">Select Starter</button>
+        </div>
+
+        <div class="pricing-card featured" id="plan-pro">
+          <div class="featured-tag">Most Popular</div>
+          <div class="plan-name">Pro Studio</div>
+          <div style="color: var(--text-muted); font-size: 13px;">For power designers & devs</div>
+          <div class="plan-price">$49 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>Everything in Starter</li>
+            <li>Unlimited Magic AI Prompts</li>
+            <li>1-Click Glass & Neon Presets</li>
+            <li>Full Local Image Asset Swapper</li>
+            <li>Instant CSS Code Copy</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;">Get Started with Pro</button>
+        </div>
+
+        <div class="pricing-card" id="plan-enterprise">
+          <div class="plan-name">Enterprise</div>
+          <div style="color: var(--text-muted); font-size: 13px;">For agencies & scaleups</div>
+          <div class="plan-price">$99 <span>/ month</span></div>
+          <ul class="plan-features">
+            <li>Everything in Pro</li>
+            <li>Team Asset Libraries</li>
+            <li>Dedicated API Integration</li>
+            <li>Priority 24/7 Support</li>
+          </ul>
+          <button class="btn-secondary" style="width: 100%;">Contact Enterprise</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Quote -->
+    <div class="testimonial" id="testimonial-box">
+      <p class="quote-text" id="quote-content">
+        "PageCraft transformed how we prototype website redesigns. We can pitch client variations live in their browser during the meeting with zero reload time!"
+      </p>
+      <div style="font-weight: 700; color: #ffffff;" id="quote-author-name">Alex Rivera</div>
+      <div style="font-size: 13px; color: var(--text-muted);" id="quote-author-title">VP of Product Design, StudioX</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 NovaCraft Studio Systems. Crafted with modern web standards and Chrome Extension APIs.</p>
+    </footer>
+  </div>
+
+  <!-- Embedded Web Editor Script for Instant Zero-Setup Live Demo -->
+  <script src="content.js"></script>
+</body>
+</html>
