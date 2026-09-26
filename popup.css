@@ -1,5 +1,6 @@
 /* ========================================================
    PageCraft Extension Popup Stylesheet
+   Professional White & Slate-Gray Palette
    ======================================================== */
 
 * {
@@ -10,9 +11,9 @@
 
 body {
   width: 320px;
-  background-color: #0b0f19;
-  color: #f1f5f9;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 13px;
   line-height: 1.5;
   user-select: none;
@@ -23,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background-color: #ffffff;
 }
 
 /* Header */
@@ -30,7 +32,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #e2e8f0;
   padding-bottom: 12px;
 }
 
@@ -43,32 +45,33 @@ body {
 .logo {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  background: #0f172a;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .title {
   font-size: 15px;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   letter-spacing: -0.01em;
 }
 
 .subtitle {
   font-size: 11px;
-  color: #94a3b8;
+  color: #64748b;
+  font-weight: 500;
 }
 
 .status-badge {
-  background: rgba(16, 185, 129, 0.12);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
   padding: 3px 8px;
   border-radius: 9999px;
   font-size: 10px;
@@ -82,14 +85,14 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
+  background: #16a34a;
+  box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
 }
 
 /* Site Card */
 .site-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 10px 12px;
   display: flex;
@@ -103,7 +106,7 @@ body {
   gap: 6px;
   font-size: 12px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #0f172a;
 }
 
 .site-name {
@@ -115,13 +118,14 @@ body {
 
 .site-memory-stat {
   font-size: 11px;
-  color: #34d399;
+  color: #16a34a;
+  font-weight: 500;
 }
 
 .btn-clear-site {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  color: #f87171;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
   border-radius: 6px;
   padding: 5px 8px;
   font-size: 11px;
@@ -135,8 +139,8 @@ body {
 }
 
 .btn-clear-site:hover {
-  background: rgba(239, 68, 68, 0.2);
-  border-color: #ef4444;
+  background: #fee2e2;
+  border-color: #f87171;
 }
 
 /* Main Action Card */
@@ -147,10 +151,10 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  background: #0f172a;
   color: #ffffff;
-  border: none;
-  border-radius: 10px;
+  border: 1px solid #0f172a;
+  border-radius: 8px;
   padding: 10px 14px;
   font-size: 13px;
   font-weight: 600;
@@ -158,13 +162,15 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
 }
 
 .btn-primary:hover {
+  background: #1e293b;
+  border-color: #1e293b;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-icon {
@@ -172,8 +178,9 @@ body {
 }
 
 .badge-key {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f8fafc;
   padding: 2px 6px;
   border-radius: 4px;
   font-family: 'JetBrains Mono', monospace;
@@ -182,15 +189,15 @@ body {
 
 .card-caption {
   font-size: 11px;
-  color: #94a3b8;
+  color: #64748b;
   text-align: center;
   line-height: 1.4;
 }
 
 /* Shortcuts */
 .shortcuts-box {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 10px;
   display: flex;
@@ -201,7 +208,7 @@ body {
 .shortcuts-title {
   font-size: 10px;
   font-weight: 700;
-  color: #94a3b8;
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 2px;
@@ -212,17 +219,18 @@ body {
   align-items: center;
   justify-content: space-between;
   font-size: 11px;
-  color: #cbd5e1;
+  color: #334155;
 }
 
 kbd {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 4px;
-  padding: 1px 6px;
+  padding: 2px 6px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #e2e8f0;
+  color: #0f172a;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 /* Footer */
@@ -232,9 +240,9 @@ kbd {
 
 .btn-secondary {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f8fafc;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 12px;
@@ -244,9 +252,10 @@ kbd {
   align-items: center;
   justify-content: center;
   transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(99, 102, 241, 0.4);
+  background: #f8fafc;
+  border-color: #cbd5e1;
 }

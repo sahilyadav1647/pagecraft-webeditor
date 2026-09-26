@@ -1,11 +1,11 @@
 /**
- * PageCraft Visual Web Editor & AI Stylist
+ * PageCraft Visual Web Editor & Inspector
  * Left-Docked Floating Inspector & Live Web Modifier.
  * 
  * Workflow:
  * 1. Click Left ✨ Icon -> Panel opens immediately on the left.
  * 2. Click "🎯 Select Text or Photo" -> Click any element on the website.
- * 3. Edit text, replace photos, pick colors, apply presets or AI prompts.
+ * 3. Edit text, replace photos, pick colors, or apply style commands.
  * 4. Click "💾 SAVE FOR THIS WEBSITE" -> Auto-restores every time you visit!
  */
 
@@ -139,7 +139,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
       font-size: 13px !important;
       line-height: 1.5 !important;
-      color: #e2e8f0 !important;
+      color: #0f172a !important;
       box-sizing: border-box !important;
     }
 
@@ -149,19 +149,19 @@
       padding: 0;
     }
 
-    /* LEFT-SIDE LAUNCHER BUTTON */
+    /* LEFT-SIDE LAUNCHER BUTTON (CLEAN WHITE & SLATE) */
     #pc-launcher {
       position: fixed !important;
       left: 18px;
       top: 50%;
       transform: translateY(-50%);
-      width: 56px !important;
-      height: 56px !important;
-      border-radius: 18px !important;
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%) !important;
-      color: #ffffff !important;
-      border: 2px solid rgba(255, 255, 255, 0.65) !important;
-      box-shadow: 0 12px 32px -4px rgba(124, 58, 237, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.35) inset !important;
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 16px !important;
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.08) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -170,7 +170,7 @@
       pointer-events: auto !important;
       user-select: none !important;
       touch-action: none !important;
-      transition: box-shadow 0.25s ease, filter 0.2s ease !important;
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease !important;
     }
 
     #pc-launcher * {
@@ -178,14 +178,15 @@
     }
 
     #pc-launcher:hover {
-      box-shadow: 0 16px 42px rgba(124, 58, 237, 0.9) !important;
-      filter: brightness(1.1) !important;
+      box-shadow: 0 14px 34px -4px rgba(15, 23, 42, 0.18), 0 4px 10px -2px rgba(15, 23, 42, 0.1) !important;
+      border-color: #94a3b8 !important;
+      transform: translateY(-50%) scale(1.04) !important;
     }
 
     #pc-launcher.dragging {
       cursor: grabbing !important;
-      transform: scale(1.1) !important;
-      box-shadow: 0 20px 50px rgba(124, 58, 237, 0.95) !important;
+      transform: scale(1.08) !important;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25) !important;
       transition: none !important;
     }
 
@@ -195,34 +196,27 @@
 
     @keyframes pc-pulse-pop {
       0% { transform: scale(1); }
-      35% { transform: scale(0.84); }
-      70% { transform: scale(1.18); }
+      35% { transform: scale(0.88); }
+      70% { transform: scale(1.12); }
       100% { transform: scale(1); }
     }
 
     #pc-launcher.inspecting {
-      background: linear-gradient(135deg, #ef4444 0%, #f97316 100%) !important;
-      box-shadow: 0 10px 30px -5px rgba(239, 68, 68, 0.7) !important;
-      animation: pc-pulse-glow 1.5s infinite !important;
-    }
-
-    @keyframes pc-pulse-glow {
-      0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+      background: #f8fafc !important;
+      border-color: #0f172a !important;
+      box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.15) !important;
     }
 
     #pc-launcher .icon {
-      font-size: 24px !important;
+      font-size: 22px !important;
       line-height: 1 !important;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
     }
 
     #pc-launcher .badge {
       position: absolute !important;
       top: -4px !important;
       right: -4px !important;
-      background: #10b981 !important;
+      background: #0f172a !important;
       color: #ffffff !important;
       font-size: 11px !important;
       font-weight: 700 !important;
@@ -233,27 +227,25 @@
       align-items: center !important;
       justify-content: center !important;
       padding: 0 5px !important;
-      border: 2px solid #0f172a !important;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+      border: 2px solid #ffffff !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2) !important;
     }
 
     .pc-tooltip {
       position: absolute !important;
       left: 64px !important;
-      background: rgba(15, 23, 42, 0.96) !important;
-      backdrop-filter: blur(8px) !important;
-      color: #f8fafc !important;
-      padding: 6px 12px !important;
-      border-radius: 8px !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      padding: 5px 11px !important;
+      border-radius: 6px !important;
       font-size: 12px !important;
       font-weight: 600 !important;
       white-space: nowrap !important;
       pointer-events: none !important;
       opacity: 0;
-      transform: translateX(-8px);
+      transform: translateX(-6px);
       transition: all 0.2s ease !important;
-      border: 1px solid rgba(255, 255, 255, 0.15) !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15) !important;
     }
 
     #pc-launcher:hover .pc-tooltip {
@@ -267,9 +259,9 @@
       top: 0 !important;
       left: 0 !important;
       pointer-events: none !important;
-      border: 2px solid #6366f1 !important;
-      background: rgba(99, 102, 241, 0.18) !important;
-      box-shadow: 0 0 16px rgba(99, 102, 241, 0.45) !important;
+      border: 2px solid #0f172a !important;
+      background: rgba(15, 23, 42, 0.08) !important;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8) inset !important;
       border-radius: 4px !important;
       z-index: 2147483640 !important;
       transition: all 0.05s ease-out !important;
@@ -282,26 +274,25 @@
 
     #pc-badge {
       position: absolute !important;
-      top: -34px !important;
+      top: -32px !important;
       left: 0 !important;
-      background: rgba(15, 23, 42, 0.96) !important;
-      backdrop-filter: blur(12px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      background: #0f172a !important;
+      border: 1px solid #334155 !important;
       color: #ffffff !important;
-      padding: 4px 10px !important;
+      padding: 3px 8px !important;
       border-radius: 6px !important;
       font-size: 11px !important;
       font-weight: 600 !important;
       white-space: nowrap !important;
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+      gap: 6px !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25) !important;
       pointer-events: none !important;
     }
 
     #pc-badge .tag {
-      color: #818cf8 !important;
+      color: #38bdf8 !important;
       font-weight: 700 !important;
       font-family: monospace !important;
     }
@@ -315,14 +306,14 @@
     }
 
     #pc-badge .dims {
-      background: rgba(255, 255, 255, 0.12) !important;
-      padding: 1px 6px !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+      padding: 1px 5px !important;
       border-radius: 4px !important;
-      color: #38bdf8 !important;
+      color: #f8fafc !important;
       font-family: monospace !important;
     }
 
-    /* LEFT-SIDE EDITOR PANEL */
+    /* LEFT-SIDE EDITOR PANEL (WHITE & SLATE GRAY THEME) */
     #pc-panel {
       position: fixed !important;
       left: 84px;
@@ -330,20 +321,18 @@
       width: 390px !important;
       max-height: min(600px, calc(100vh - 30px)) !important;
       height: min(600px, calc(100vh - 30px)) !important;
-      background: rgba(15, 19, 32, 0.98) !important;
-      backdrop-filter: blur(28px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.16) !important;
-      border-radius: 18px !important;
-      box-shadow: 0 24px 70px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.08) inset !important;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 16px !important;
+      box-shadow: 0 20px 48px -10px rgba(15, 23, 42, 0.16), 0 1px 4px rgba(0, 0, 0, 0.04) !important;
       display: none !important;
       flex-direction: column !important;
       z-index: 2147483646 !important;
       pointer-events: none !important;
       overflow: hidden !important;
       opacity: 0;
-      transform: translateX(-16px) scale(0.97);
-      transition: opacity 0.25s ease, transform 0.25s ease !important;
+      transform: translateX(-12px) scale(0.98);
+      transition: opacity 0.22s ease, transform 0.22s ease !important;
     }
 
     #pc-panel.visible {
@@ -359,15 +348,15 @@
 
     #pc-panel.minimized .pc-panel-body,
     #pc-panel.minimized .pc-tabs,
-    #pc-panel.minimized .pc-breadcrumbs,
+    #pc-panel.minimized #pc-element-nav-bar,
     #pc-panel.minimized .pc-footer {
       display: none !important;
     }
 
     .pc-header {
       padding: 12px 16px !important;
-      background: rgba(255, 255, 255, 0.04) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      background: #f8fafc !important;
+      border-bottom: 1px solid #e2e8f0 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
@@ -382,21 +371,21 @@
     .pc-header-title {
       display: flex !important;
       align-items: center !important;
-      gap: 10px !important;
+      gap: 8px !important;
       font-weight: 700 !important;
       font-size: 14px !important;
-      color: #f8fafc !important;
+      color: #0f172a !important;
     }
 
     .pc-logo-icon {
       width: 24px !important;
       height: 24px !important;
-      background: linear-gradient(135deg, #6366f1, #d946ef) !important;
+      background: #0f172a !important;
       border-radius: 6px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      font-size: 13px !important;
+      font-size: 12px !important;
       color: #ffffff !important;
     }
 
@@ -409,31 +398,31 @@
     .pc-btn-icon {
       background: transparent !important;
       border: none !important;
-      color: #94a3b8 !important;
-      width: 28px !important;
-      height: 28px !important;
+      color: #64748b !important;
+      width: 26px !important;
+      height: 26px !important;
       border-radius: 6px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       cursor: pointer !important;
-      font-size: 14px !important;
+      font-size: 13px !important;
       transition: all 0.15s ease !important;
     }
 
     .pc-btn-icon:hover {
-      background: rgba(255, 255, 255, 0.12) !important;
-      color: #ffffff !important;
+      background: #e2e8f0 !important;
+      color: #0f172a !important;
     }
 
     /* COMPACT ACTIVE TARGET BADGE IN HEADER */
     .pc-target-badge {
-      background: rgba(56, 189, 248, 0.15) !important;
-      color: #38bdf8 !important;
-      border: 1px solid rgba(56, 189, 248, 0.4) !important;
-      padding: 2px 8px !important;
+      background: #f1f5f9 !important;
+      color: #334155 !important;
+      border: 1px solid #cbd5e1 !important;
+      padding: 2px 7px !important;
       border-radius: 6px !important;
-      font-family: -apple-system, BlinkMacSystemFont, monospace !important;
+      font-family: monospace !important;
       font-size: 11px !important;
       font-weight: 600 !important;
       max-width: 170px !important;
@@ -451,12 +440,10 @@
       align-items: center !important;
       gap: 6px !important;
       padding: 6px 10px !important;
-      background: rgba(15, 23, 42, 0.96) !important;
-      backdrop-filter: blur(16px) !important;
-      -webkit-backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
       border-radius: 12px !important;
-      box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(99, 102, 241, 0.4) !important;
+      box-shadow: 0 14px 34px -4px rgba(15, 23, 42, 0.16), 0 2px 6px -1px rgba(15, 23, 42, 0.06) !important;
       pointer-events: auto !important;
       user-select: none !important;
       opacity: 0;
@@ -476,80 +463,82 @@
       gap: 5px !important;
       padding: 5px 12px !important;
       font-size: 12px !important;
-      font-weight: 700 !important;
-      color: #ffffff !important;
-      border-radius: 8px !important;
-      border: none !important;
+      font-weight: 600 !important;
+      border-radius: 7px !important;
       cursor: pointer !important;
       transition: all 0.15s ease !important;
       white-space: nowrap !important;
     }
 
     .pc-float-btn.primary {
-      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18) !important;
     }
     .pc-float-btn.primary:hover {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+      background: #1e293b !important;
       transform: translateY(-1px) !important;
     }
 
     .pc-float-btn.danger {
-      background: rgba(239, 68, 68, 0.25) !important;
-      border: 1px solid rgba(239, 68, 68, 0.5) !important;
-      color: #fca5a5 !important;
+      background: #fef2f2 !important;
+      border: 1px solid #fecaca !important;
+      color: #dc2626 !important;
     }
     .pc-float-btn.danger:hover {
-      background: rgba(239, 68, 68, 0.45) !important;
-      color: #ffffff !important;
+      background: #fee2e2 !important;
+      color: #b91c1c !important;
       transform: translateY(-1px) !important;
     }
 
     .pc-float-btn.success {
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4) !important;
+      background: #f0fdf4 !important;
+      border: 1px solid #bbf7d0 !important;
+      color: #16a34a !important;
     }
     .pc-float-btn.success:hover {
-      background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+      background: #dcfce7 !important;
+      color: #15803d !important;
       transform: translateY(-1px) !important;
     }
 
+    /* SEGMENTED TABS */
     .pc-tabs {
       display: flex !important;
-      background: rgba(0, 0, 0, 0.3) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-      padding: 4px 8px !important;
+      background: #f1f5f9 !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      padding: 4px 6px !important;
       gap: 4px !important;
-      margin-top: 8px !important;
     }
 
     .pc-tab-btn {
       flex: 1 !important;
-      padding: 7px 10px !important;
+      padding: 6px 8px !important;
       background: transparent !important;
-      border: none !important;
-      color: #94a3b8 !important;
+      border: 1px solid transparent !important;
+      color: #64748b !important;
       font-size: 12px !important;
       font-weight: 600 !important;
-      border-radius: 8px !important;
+      border-radius: 7px !important;
       cursor: pointer !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
-      transition: all 0.18s ease !important;
+      gap: 5px !important;
+      transition: all 0.15s ease !important;
     }
 
     .pc-tab-btn:hover {
-      color: #e2e8f0 !important;
-      background: rgba(255, 255, 255, 0.06) !important;
+      color: #0f172a !important;
+      background: rgba(255, 255, 255, 0.6) !important;
     }
 
     .pc-tab-btn.active {
-      color: #ffffff !important;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.35) 0%, rgba(139, 92, 246, 0.25) 100%) !important;
-      border: 1px solid rgba(99, 102, 241, 0.35) !important;
+      color: #0f172a !important;
+      background: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
     }
 
     .pc-panel-body {
@@ -560,12 +549,13 @@
       display: flex !important;
       flex-direction: column !important;
       gap: 14px !important;
+      background: #ffffff !important;
       scrollbar-width: thin !important;
-      scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+      scrollbar-color: #cbd5e1 transparent !important;
     }
 
-    .pc-panel-body::-webkit-scrollbar { width: 6px !important; }
-    .pc-panel-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2) !important; border-radius: 3px !important; }
+    .pc-panel-body::-webkit-scrollbar { width: 5px !important; }
+    .pc-panel-body::-webkit-scrollbar-thumb { background: #cbd5e1 !important; border-radius: 3px !important; }
 
     .pc-tab-pane {
       display: none !important;
@@ -587,8 +577,8 @@
       font-size: 11px !important;
       font-weight: 700 !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.06em !important;
-      color: #94a3b8 !important;
+      letter-spacing: 0.05em !important;
+      color: #64748b !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
@@ -610,26 +600,27 @@
 
     .pc-label {
       font-size: 11px !important;
-      font-weight: 500 !important;
-      color: #cbd5e1 !important;
+      font-weight: 600 !important;
+      color: #334155 !important;
     }
 
     .pc-input, .pc-textarea, .pc-select {
-      background: rgba(0, 0, 0, 0.35) !important;
-      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
       border-radius: 8px !important;
-      color: #f8fafc !important;
+      color: #0f172a !important;
       padding: 8px 10px !important;
       font-size: 12px !important;
       font-family: inherit !important;
       width: 100% !important;
       outline: none !important;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
     }
 
     .pc-input:focus, .pc-textarea:focus, .pc-select:focus {
-      border-color: #818cf8 !important;
-      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3) !important;
-      background: rgba(0, 0, 0, 0.5) !important;
+      border-color: #0f172a !important;
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08) !important;
+      background: #ffffff !important;
     }
 
     .pc-textarea {
@@ -642,8 +633,8 @@
 
     /* IMAGE REPLACER BOX */
     .pc-image-box {
-      background: rgba(0, 0, 0, 0.3) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      background: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
       border-radius: 10px !important;
       padding: 10px !important;
       display: flex !important;
@@ -658,19 +649,20 @@
     }
 
     .pc-image-preview {
-      width: 54px !important;
-      height: 54px !important;
+      width: 52px !important;
+      height: 52px !important;
       border-radius: 8px !important;
       object-fit: cover !important;
-      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      border: 1px solid #cbd5e1 !important;
+      background: #ffffff !important;
     }
 
     .pc-color-group {
       display: flex !important;
       align-items: center !important;
       gap: 8px !important;
-      background: rgba(0, 0, 0, 0.3) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
       padding: 5px 8px !important;
       border-radius: 8px !important;
     }
@@ -679,7 +671,7 @@
       width: 24px !important;
       height: 24px !important;
       border-radius: 6px !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border: 1px solid #cbd5e1 !important;
       position: relative !important;
       overflow: hidden !important;
       cursor: pointer !important;
@@ -699,7 +691,7 @@
     .pc-color-text {
       background: transparent !important;
       border: none !important;
-      color: #f1f5f9 !important;
+      color: #0f172a !important;
       font-family: monospace !important;
       font-size: 12px !important;
       width: 100% !important;
@@ -711,7 +703,7 @@
       -webkit-appearance: none !important;
       height: 5px !important;
       border-radius: 3px !important;
-      background: rgba(255, 255, 255, 0.2) !important;
+      background: #e2e8f0 !important;
       outline: none !important;
     }
 
@@ -720,18 +712,19 @@
       width: 16px !important;
       height: 16px !important;
       border-radius: 50% !important;
-      background: #818cf8 !important;
-      box-shadow: 0 0 8px rgba(99, 102, 241, 0.8) !important;
+      background: #0f172a !important;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.3) !important;
       cursor: pointer !important;
       border: 2px solid #ffffff !important;
     }
 
     .pc-slider-val {
-      min-width: 46px !important;
+      min-width: 44px !important;
       text-align: right !important;
       font-family: monospace !important;
       font-size: 11px !important;
-      color: #94a3b8 !important;
+      font-weight: 600 !important;
+      color: #64748b !important;
     }
 
     .pc-presets-grid {
@@ -742,37 +735,38 @@
 
     .pc-preset-card {
       padding: 10px !important;
-      border-radius: 10px !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
-      background: rgba(255, 255, 255, 0.04) !important;
+      border-radius: 8px !important;
+      border: 1px solid #e2e8f0 !important;
+      background: #f8fafc !important;
       cursor: pointer !important;
       display: flex !important;
       flex-direction: column !important;
-      gap: 4px !important;
-      transition: all 0.2s ease !important;
+      gap: 3px !important;
+      transition: all 0.15s ease !important;
       text-align: left !important;
     }
 
     .pc-preset-card:hover {
-      background: rgba(255, 255, 255, 0.1) !important;
-      border-color: rgba(99, 102, 241, 0.6) !important;
-      transform: translateY(-2px) !important;
+      background: #ffffff !important;
+      border-color: #0f172a !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+      transform: translateY(-1px) !important;
     }
 
     .pc-preset-title {
       font-size: 12px !important;
-      font-weight: 600 !important;
-      color: #f1f5f9 !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
     }
 
     .pc-preset-desc {
       font-size: 10px !important;
-      color: #94a3b8 !important;
+      color: #64748b !important;
     }
 
     .pc-ai-box {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(217, 70, 239, 0.1) 100%) !important;
-      border: 1px solid rgba(99, 102, 241, 0.35) !important;
+      background: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
       border-radius: 12px !important;
       padding: 12px !important;
       display: flex !important;
@@ -782,11 +776,11 @@
 
     .pc-ai-textarea {
       min-height: 70px !important;
-      background: rgba(0, 0, 0, 0.45) !important;
-      border: 1px solid rgba(99, 102, 241, 0.4) !important;
-      border-radius: 10px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 8px !important;
       padding: 10px !important;
-      color: #ffffff !important;
+      color: #0f172a !important;
       font-size: 12px !important;
       resize: none !important;
       font-family: inherit !important;
@@ -800,19 +794,21 @@
     }
 
     .pc-ai-chip {
-      background: rgba(255, 255, 255, 0.08) !important;
-      border: 1px solid rgba(255, 255, 255, 0.14) !important;
-      color: #cbd5e1 !important;
-      padding: 4px 8px !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #334155 !important;
+      padding: 4px 9px !important;
       border-radius: 6px !important;
-      font-size: 10px !important;
+      font-size: 11px !important;
+      font-weight: 500 !important;
       cursor: pointer !important;
       transition: all 0.15s ease !important;
     }
 
     .pc-ai-chip:hover {
-      background: rgba(99, 102, 241, 0.25) !important;
+      background: #0f172a !important;
       color: #ffffff !important;
+      border-color: #0f172a !important;
     }
 
     .pc-actions-grid {
@@ -823,40 +819,44 @@
 
     .pc-action-btn {
       padding: 8px 10px !important;
-      background: rgba(255, 255, 255, 0.06) !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
       border-radius: 8px !important;
-      color: #e2e8f0 !important;
+      color: #334155 !important;
       font-size: 11px !important;
-      font-weight: 500 !important;
+      font-weight: 600 !important;
       cursor: pointer !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 6px !important;
+      transition: all 0.15s ease !important;
     }
 
     .pc-action-btn:hover {
-      background: rgba(255, 255, 255, 0.14) !important;
-      color: #ffffff !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border-color: #94a3b8 !important;
     }
 
     .pc-action-btn.danger {
-      color: #f87171 !important;
-      border-color: rgba(239, 68, 68, 0.3) !important;
+      color: #dc2626 !important;
+      background: #fef2f2 !important;
+      border-color: #fecaca !important;
     }
 
     .pc-action-btn.danger:hover {
-      background: rgba(239, 68, 68, 0.2) !important;
-      border-color: #ef4444 !important;
+      background: #fee2e2 !important;
+      color: #b91c1c !important;
+      border-color: #fca5a5 !important;
     }
 
     /* FOOTER WITH BIG SAVE BUTTON */
     .pc-footer {
       flex-shrink: 0 !important;
       padding: 12px 16px !important;
-      background: rgba(0, 0, 0, 0.4) !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      background: #f8fafc !important;
+      border-top: 1px solid #e2e8f0 !important;
       display: flex !important;
       flex-direction: column !important;
       gap: 8px !important;
@@ -870,11 +870,11 @@
     }
 
     .pc-btn-save-big {
-      background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+      background: #0f172a !important;
       color: #ffffff !important;
       border: none !important;
       padding: 11px 16px !important;
-      border-radius: 10px !important;
+      border-radius: 8px !important;
       font-size: 13px !important;
       font-weight: 700 !important;
       cursor: pointer !important;
@@ -883,12 +883,13 @@
       justify-content: center !important;
       gap: 8px !important;
       width: 100% !important;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.18) !important;
       transition: all 0.2s ease !important;
     }
 
     .pc-btn-save-big:hover {
-      box-shadow: 0 6px 22px rgba(16, 185, 129, 0.6) !important;
+      background: #1e293b !important;
+      box-shadow: 0 5px 16px rgba(15, 23, 42, 0.25) !important;
       transform: translateY(-1px) !important;
     }
 
@@ -896,11 +897,10 @@
       position: fixed !important;
       bottom: 24px !important;
       left: 20px !important;
-      background: rgba(15, 23, 42, 0.96) !important;
-      backdrop-filter: blur(12px) !important;
+      background: #0f172a !important;
       color: #ffffff !important;
-      border: 1px solid rgba(99, 102, 241, 0.45) !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+      border: 1px solid #334155 !important;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25) !important;
       padding: 9px 16px !important;
       border-radius: 8px !important;
       font-size: 12px !important;
@@ -909,7 +909,7 @@
       pointer-events: none !important;
       opacity: 0;
       transform: translateY(10px);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     #pc-toast.show {
@@ -968,9 +968,9 @@
       </div>
 
       <!-- PARENT ELEMENT SELECTOR (EXPAND SELECTION) -->
-      <div id="pc-element-nav-bar" style="display: none; margin: 6px 14px 0 14px; padding: 6px 10px; background: rgba(30, 41, 59, 0.75); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; align-items: center; justify-content: space-between; font-size: 11px;">
-        <span style="color: #94a3b8; font-size: 11px;">Selected:</span>
-        <button id="pc-btn-select-parent" style="background: rgba(99, 102, 241, 0.25); border: 1px solid rgba(99, 102, 241, 0.5); color: #c7d2fe; padding: 3px 9px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.15s ease;">
+      <div id="pc-element-nav-bar" style="display: none; margin: 6px 14px 0 14px; padding: 6px 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; align-items: center; justify-content: space-between; font-size: 11px;">
+        <span style="color: #64748b; font-size: 11px; font-weight: 500;">Selected:</span>
+        <button id="pc-btn-select-parent" style="background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; padding: 3px 9px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.15s ease; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);">
           <span>⬆️</span>
           <span id="pc-parent-tag-label">Select Outer Container</span>
         </button>
@@ -980,7 +980,7 @@
       <div class="pc-tabs">
         <button class="pc-tab-btn active" data-tab="content">✍️ Text & Photo</button>
         <button class="pc-tab-btn" data-tab="design">🎨 Design</button>
-        <button class="pc-tab-btn" data-tab="ai">🪄 Magic AI</button>
+        <button class="pc-tab-btn" data-tab="ai">⚡ Quick Presets</button>
         <button class="pc-tab-btn" data-tab="structure">🧱 Tools</button>
       </div>
 
@@ -993,20 +993,20 @@
           <div class="pc-section">
             <div class="pc-section-title">
               <span>Text Content</span>
-              <label style="font-size: 10px; cursor: pointer; text-transform: none; color: #818cf8;">
+              <label style="font-size: 10px; cursor: pointer; text-transform: none; color: #475569; font-weight: 500;">
                 <input type="checkbox" id="pc-html-mode"> HTML Mode
               </label>
             </div>
             <textarea class="pc-textarea" id="pc-text-input" placeholder="Click 'Select Text or Photo' then click anything on the page..."></textarea>
             
             <!-- CONFIRM TEXT BUTTON -->
-            <button class="pc-btn-save-big" id="pc-btn-confirm-text" style="margin-top: 8px; width: 100%; justify-content: center; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); font-weight: 700;">
+            <button class="pc-btn-save-big" id="pc-btn-confirm-text" style="margin-top: 8px; width: 100%; justify-content: center; background: #0f172a; color: #ffffff; font-weight: 700;">
               <span>✔️</span>
               <span id="pc-btn-confirm-text-label">CONFIRM & CHANGE TEXT</span>
             </button>
 
             <!-- REMOVE THIS PART BUTTON -->
-            <button class="pc-action-btn danger" id="pc-btn-remove-part" style="margin-top: 8px; width: 100%; padding: 10px; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; background: rgba(239, 68, 68, 0.16); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; border-radius: 8px; cursor: pointer;">
+            <button class="pc-action-btn danger" id="pc-btn-remove-part" style="margin-top: 8px; width: 100%; padding: 10px; font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; cursor: pointer;">
               <span>🗑️</span>
               <span>Remove This Part (Delete from Page)</span>
             </button>
@@ -1019,7 +1019,7 @@
               <div class="pc-image-preview-wrap">
                 <img id="pc-img-preview" class="pc-image-preview" src="" alt="Thumbnail">
                 <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
-                  <span style="font-size: 11px; font-weight: 600; color: #f8fafc;">Upload Replacement</span>
+                  <span style="font-size: 11px; font-weight: 600; color: #0f172a;">Upload Replacement</span>
                   <input type="file" id="pc-img-file" accept="image/*" class="pc-input" style="padding: 4px; font-size: 11px;">
                 </div>
               </div>
@@ -1027,7 +1027,7 @@
                 <label class="pc-label">Or Image Web URL</label>
                 <input type="text" class="pc-input" id="pc-img-src" placeholder="https://example.com/photo.jpg">
               </div>
-              <button class="pc-btn-save-big" id="pc-btn-confirm-img" style="margin-top: 8px; background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);">
+              <button class="pc-btn-save-big" id="pc-btn-confirm-img" style="margin-top: 8px; background: #0f172a; color: #ffffff;">
                 <span>🖼️</span>
                 <span>CONFIRM & REPLACE PHOTO</span>
               </button>
@@ -1111,21 +1111,21 @@
           </div>
         </div>
 
-        <!-- Tab 3: Magic AI -->
+        <!-- Tab 3: Style Commands -->
         <div class="pc-tab-pane" id="tab-ai">
           <div class="pc-ai-box">
-            <div style="font-size: 12px; font-weight: 700; color: #ffffff;">
-              <span>🪄 AI Prompt</span>
+            <div style="font-size: 12px; font-weight: 700; color: #0f172a;">
+              <span>⚡ Style Command & Presets</span>
             </div>
-            <textarea class="pc-ai-textarea" id="pc-ai-prompt" placeholder="e.g. 'Make this text larger and bold emerald green' or 'Make button Apple style'"></textarea>
-            <button class="pc-btn-save-big" id="pc-ai-submit" style="background: linear-gradient(135deg, #6366f1, #d946ef);">
-              <span>✨ Apply AI Style</span>
+            <textarea class="pc-ai-textarea" id="pc-ai-prompt" placeholder="e.g. 'Make font larger and bold slate gray' or 'Make button Apple style'"></textarea>
+            <button class="pc-btn-save-big" id="pc-ai-submit" style="background: #0f172a; color: #ffffff;">
+              <span>⚡ Apply Style Command</span>
             </button>
             <div class="pc-ai-chips">
               <span class="pc-ai-chip" data-prompt="Make this button look like a sleek Apple CTA with rounded pill shape">🍎 Apple Button</span>
-              <span class="pc-ai-chip" data-prompt="Make this element modern glassmorphic with blur and soft border">✨ Glass Card</span>
-              <span class="pc-ai-chip" data-prompt="Make font larger, extra bold, and vibrant blue">💎 Bold & Blue</span>
-              <span class="pc-ai-chip" data-prompt="Add high-energy cyberpunk dark theme with glowing cyan borders">🔥 Cyberpunk</span>
+              <span class="pc-ai-chip" data-prompt="Make this element modern glassmorphic with blur and soft border">✨ Frosted Glass</span>
+              <span class="pc-ai-chip" data-prompt="Make font larger, extra bold, and deep slate">📐 Slate Typography</span>
+              <span class="pc-ai-chip" data-prompt="Add clean high-contrast dark theme with sharp borders">⬛ Slate Dark</span>
             </div>
           </div>
         </div>
@@ -1217,7 +1217,7 @@
   const radiusSlider = shadow.getElementById('pc-radius');
   const radiusVal = shadow.getElementById('pc-radius-val');
 
-  // AI Controls
+  // Style Command Controls
   const aiPrompt = shadow.getElementById('pc-ai-prompt');
   const aiSubmit = shadow.getElementById('pc-ai-submit');
 
@@ -2309,7 +2309,7 @@
     });
   });
 
-  // AI Prompt Logic
+  // Style Command Logic
   function parseAndApplyAIPrompt(prompt) {
     if (!selectedElement || !prompt.trim()) return;
     const lower = prompt.toLowerCase();
@@ -2344,8 +2344,8 @@
     }
 
     syncEditorWithElement(selectedElement);
-    pushHistory(selectedElement, 'AI Style');
-    showToast(`🪄 AI applied ${count || 1} change(s)!`);
+    pushHistory(selectedElement, 'Style Command');
+    showToast(`✨ Applied ${count || 1} style change(s)!`);
   }
 
   aiSubmit.addEventListener('click', () => parseAndApplyAIPrompt(aiPrompt.value));

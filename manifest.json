@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "PageCraft - Visual Web Editor & AI Stylist",
+  "name": "PageCraft - Visual Web Editor & Inspector",
   "version": "2.2.0",
-  "description": "Inspect, visually edit, re-style, and AI-transform any webpage element in real time on any website.",
+  "description": "Inspect, visually edit text, swap photos, customize styles, remove elements, and permanently save changes on any website.",
   "permissions": [
     "activeTab",
     "storage",

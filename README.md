@@ -1,93 +1,85 @@
-# ✨ PageCraft - Visual Web Editor & AI Stylist
+# PageCraft - Visual Web Editor & Inspector
 
-> **Inspect, visually edit text, swap photos, customize styles, remove unwanted elements, and permanently save changes on any website in Google Chrome & Edge.**  
-> Built with Manifest V3 and isolated Shadow DOM architecture.
-
----
-
-## 🌟 Features
-
-- 🖱️ **Direct In-Page Editing**: Highlight any text on any webpage or double-click to type directly like a Word document or Google Doc.
-- 🪄 **Floating Selection Toolbar**: Select any text on a webpage to instantly bring up the in-page quick-action toolbar:
-  - `[ ✍️ Edit Text ]`: Activates in-place typing.
-  - `[ 🗑️ Remove Part ]`: Instantly deletes the highlighted text or section.
-  - `[ 💾 Save ]`: Saves changes immediately.
-- 🎯 **Visual Element Inspector**: Click the floating launcher icon to inspect any button, card, header, or image with live bounding highlights, tag names, and computed dimensions.
-- 🖼️ **Image & Photo Swapper**: Replace photos on any website by pasting an image URL or uploading a local image from your computer.
-- 🎨 **Live Design & Style Controls**: Adjust typography, font sizes, text & background colors, margins, padding, border radiuses, and box shadows.
-- ⚡ **1-Click Modern Presets**: Apply curated styles instantly: *Glassmorphism, Cyber Neon, Obsidian Dark, Minimal Luxe, Vibrant CTA, and Emerald*.
-- 💾 **Per-Website Permanent Memory**: Click **"SAVE FOR THIS WEBSITE"** — all your text edits, style customizations, and removed sections are stored in `chrome.storage.local` and automatically restore every time you visit or refresh that website!
-- 🛡️ **Shadow DOM Isolation**: The editor UI runs inside an isolated Shadow Root so that host website styles can never break PageCraft, and PageCraft never interferes with the website's layout.
+> **A high-performance Chrome & Edge extension for live in-page visual inspection, direct document-style text editing, asset replacement, layout re-styling, and per-domain persistence.**  
+> Built with Manifest V3 and isolated Shadow DOM architecture for zero CSS collision.
 
 ---
 
-## 🚀 How to Install (For Anyone)
+## Key Features
 
-Anyone can install and use PageCraft on Google Chrome, Brave, Microsoft Edge, or any Chromium browser in 30 seconds:
-
-### Step 1: Download the Repository
-- Click the green **Code** button at the top of this repository and select **Download ZIP** (or clone via Git):
-  ```bash
-  git clone https://github.com/sahilyadav1647/pagecraft-webeditor.git
-  ```
-- Unzip the downloaded file on your computer.
-
-### Step 2: Open Extensions in Chrome
-- Open Google Chrome and enter `chrome://extensions` in the address bar.
-- Turn **ON** the **Developer mode** toggle in the top-right corner.
-
-### Step 3: Load the Extension
-1. Click the **Load unpacked** button in the top-left corner.
-2. Select the unzipped project folder containing `manifest.json`.
-3. 🎉 **Done!** PageCraft is now installed and active on all websites.
+- **Direct In-Page Editing**: Highlight any text on any webpage or double-click to type directly in place, similar to modern document editors.
+- **Floating Contextual Toolbar**: Selecting text on any webpage immediately reveals contextual actions:
+  - `[ ✍️ Edit Text ]`: Enables in-place `contentEditable` typing.
+  - `[ 🗑️ Remove Part ]`: Instantly purges the selected element or range from the DOM.
+  - `[ 💾 Save ]`: Saves domain modifications to local extension storage.
+- **Visual Element Inspector**: Click the floating launcher icon to inspect any button, card, headline, or layout container with bounding highlights, tag names, and computed dimensions.
+- **Asset Replacement**: Swap images and media in real time via URL input or local file upload.
+- **Design & Typography Controls**: Adjust font sizing, line height, text colors, background colors, padding, margins, border radii, and drop shadows.
+- **Curated Style Presets**: Apply standardized styling presets (*Minimal Light, Obsidian, Glass, Clean Card, Emerald Accent*).
+- **Per-Domain Persistence**: Modifications and element deletions are saved into `chrome.storage.local` under the website domain, automatically restoring on page refresh and subsequent visits.
+- **Shadow DOM Encapsulation**: Complete host isolation prevents the target webpage's CSS from breaking the editor UI and ensures zero side effects on the inspected page.
 
 ---
 
-## 🎮 How to Use
+## Installation Guide
 
-1. **Open Any Webpage**: Go to any website (e.g. Wikipedia, blogs, or local sites).
-2. **Select Text**:
-   - Highlight any text with your mouse.
-   - Use the **Floating Toolbar** directly above your selection or use the **PageCraft Panel** on the left.
-3. **Edit or Remove**:
-   - Type your new text in the panel and click **`[ ✓ CONFIRM & CHANGE TEXT ]`**, or click **`[ ✍️ Edit Text ]`** to type directly on the page.
-   - Click **`[ 🗑️ Remove Part ]`** to delete unwanted banners, ads, or sections.
-4. **Save Permanently**:
-   - Click **`[ 💾 SAVE FOR THIS WEBSITE ]`**.
-   - Your modifications are remembered and re-applied automatically every time you visit!
+### Option 1: Load from Source (Developer Mode)
+
+1. Clone or download this repository:
+   ```bash
+   git clone https://github.com/pagecraft-editor/pagecraft-webeditor.git
+   ```
+2. Open Google Chrome, Microsoft Edge, or any Chromium-based browser.
+3. Navigate to `chrome://extensions` (or `edge://extensions`).
+4. Enable the **Developer mode** toggle in the top-right corner.
+5. Click **Load unpacked** and select the folder containing `manifest.json`.
+6. The extension is now active on all websites.
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## Usage Workflow
+
+1. **Activate the Editor**: Click the floating launcher icon docked on the left or press `Alt + E`.
+2. **Select Any Element**:
+   - Highlight any text with your mouse to trigger the floating quick-action toolbar.
+   - Or click any element on the page while the inspector is active.
+3. **Modify Content**:
+   - Edit the text in the panel textarea and click **`[ ✓ Confirm & Apply ]`**, or click **`[ ✍️ Edit Text ]`** to type directly on the page.
+   - Click **`[ 🗑️ Remove This Part ]`** to delete unwanted elements, banners, or ads.
+4. **Save Across Visits**:
+   - Click **`[ 💾 Save For This Website ]`** to persist your changes permanently for that domain.
+
+---
+
+## Keyboard Shortcuts
 
 | Shortcut | Action |
 | :--- | :--- |
-| **`Alt + E`** (or `Option + E`) | Toggle Element Inspector on/off |
-| **`Esc`** | Minimize Editor Panel |
-| **`Ctrl + Z`** (or `Cmd + Z`) | Undo last styling or text modification |
-| **`Ctrl + Shift + Z`** | Redo action |
+| **`Alt + E`** (or `Option + E`) | Toggle Inspector / Panel |
+| **`Esc`** | Dismiss / Minimize Panel |
+| **`Ctrl + Z`** (or `Cmd + Z`) | Undo last DOM modification |
+| **`Ctrl + Shift + Z`** | Redo modification |
 
 ---
 
-## 📁 Repository Structure
+## Technical Architecture
 
 ```
 pagecraft-webeditor/
-├── manifest.json       # Chrome Extension Manifest V3 configuration
-├── content.js          # In-page inspector, selection toolbar, shadow DOM & storage
-├── content.css         # Stylesheet for isolated Shadow DOM elements
-├── background.js       # Background service worker & context menu handlers
-├── popup.html          # Browser toolbar action popup UI
-├── popup.css           # Popup styles
-├── popup.js            # Popup controls & activeTab messaging
+├── manifest.json       # Manifest V3 configuration & permission scopes
+├── content.js          # In-page inspector, selection controller & shadow host
+├── content.css         # Shadow DOM styles
+├── background.js       # Background service worker & context menu routing
+├── popup.html          # Browser action popup UI
+├── popup.css           # Popup stylesheet
+├── popup.js            # Popup communication bridge
 ├── style.css           # Web-accessible stylesheet
-├── demo.html           # Standalone SaaS testing canvas
-├── icons/              # Extension icons (16px, 48px, 128px)
-└── README.md           # Documentation & user guide
+├── demo.html           # Standalone component test canvas
+└── icons/              # Extension icons (16px, 48px, 128px)
 ```
 
 ---
 
-## 📄 License
+## License
 
-MIT License. Free to use, modify, and distribute.
+MIT License. Free and open source.
